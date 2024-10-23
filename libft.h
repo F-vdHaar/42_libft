@@ -6,7 +6,7 @@
 /*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:35:52 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/10/23 13:21:18 by fvon-der         ###   ########.fr       */
+/*   Updated: 2024/10/23 13:26:31 by fvon-der         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,8 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 char	*ft_strdup(const char *s);
+// Conversion functions
+// from <stdlib.h>
+int		ft_atoi(const char *nptr);
+void	*ft_calloc(size_t nmemb, size_t size);
 #endif
