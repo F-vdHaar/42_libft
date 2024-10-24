@@ -6,7 +6,7 @@
 #    By: fvon-de <fvon-der@student.42heilbronn.d    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 14:52:11 by fvon-der          #+#    #+#              #
-#    Updated: 2024/10/24 12:53:39 by fvon-de          ###   ########.fr        #
+#    Updated: 2024/10/24 13:25:51 by fvon-de          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,37 +44,10 @@ SRCS = $(SRC_DIR)/ft_atoi.c $(SRC_DIR)/ft_bzero.c $(SRC_DIR)/ft_calloc.c $(SRC_D
 	   $(SRC_DIR)/ft_lstnew_bonus.c $(SRC_DIR)/ft_lstsize_bonus.c
 
 # Manually define object files
-OBJS = $(OBJ_DIR)/ft_atoi.o $(OBJ_DIR)/ft_bzero.o $(OBJ_DIR)/ft_calloc.o $(OBJ_DIR)/ft_isalnum.o \
-	   $(OBJ_DIR)/ft_isalpha.o $(OBJ_DIR)/ft_isascii.o $(OBJ_DIR)/ft_isdigit.o $(OBJ_DIR)/ft_isprint.o \
-	   $(OBJ_DIR)/ft_itoa.o $(OBJ_DIR)/ft_memchr.o $(OBJ_DIR)/ft_memcmp.o $(OBJ_DIR)/ft_memcpy.o \
-	   $(OBJ_DIR)/ft_memmove.o $(OBJ_DIR)/ft_memset.o $(OBJ_DIR)/ft_putchar_fd.o $(OBJ_DIR)/ft_putendl_fd.o \
-	   $(OBJ_DIR)/ft_putnbr_fd.o $(OBJ_DIR)/ft_putstr_fd.o $(OBJ_DIR)/ft_split.o $(OBJ_DIR)/ft_strchr.o \
-	   $(OBJ_DIR)/ft_strdup.o $(OBJ_DIR)/ft_striteri.o $(OBJ_DIR)/ft_strjoin.o $(OBJ_DIR)/ft_strlcat.o \
-	   $(OBJ_DIR)/ft_strlcpy.o $(OBJ_DIR)/ft_strlen.o $(OBJ_DIR)/ft_strmapi.o $(OBJ_DIR)/ft_strncmp.o \
-	   $(OBJ_DIR)/ft_strnstr.o $(OBJ_DIR)/ft_strrchr.o $(OBJ_DIR)/ft_strtrim.o $(OBJ_DIR)/ft_substr.o \
-	   $(OBJ_DIR)/ft_tolower.o $(OBJ_DIR)/ft_toupper.o $(OBJ_DIR)/ft_lstadd_back_bonus.o \
-	   $(OBJ_DIR)/ft_lstadd_front_bonus.o $(OBJ_DIR)/ft_lstclear_bonus.o $(OBJ_DIR)/ft_lstdelone_bonus.o \
-	   $(OBJ_DIR)/ft_lstiter_bonus.o $(OBJ_DIR)/ft_lstlast_bonus.o $(OBJ_DIR)/ft_lstmap_bonus.o \
-	   $(OBJ_DIR)/ft_lstnew_bonus.o $(OBJ_DIR)/ft_lstsize_bonus.o
+OBJS =  $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 # Debug object files
-DEBUG_OBJS = $(OBJ_DIR)/debug_ft_atoi.o $(OBJ_DIR)/debug_ft_bzero.o $(OBJ_DIR)/debug_ft_calloc.o \
-			 $(OBJ_DIR)/debug_ft_isalnum.o $(OBJ_DIR)/debug_ft_isalpha.o $(OBJ_DIR)/debug_ft_isascii.o \
-			 $(OBJ_DIR)/debug_ft_isdigit.o $(OBJ_DIR)/debug_ft_isprint.o $(OBJ_DIR)/debug_ft_itoa.o \
-			 $(OBJ_DIR)/debug_ft_memchr.o $(OBJ_DIR)/debug_ft_memcmp.o $(OBJ_DIR)/debug_ft_memcpy.o \
-			 $(OBJ_DIR)/debug_ft_memmove.o $(OBJ_DIR)/debug_ft_memset.o $(OBJ_DIR)/debug_ft_putchar_fd.o \
-			 $(OBJ_DIR)/debug_ft_putendl_fd.o $(OBJ_DIR)/debug_ft_putnbr_fd.o $(OBJ_DIR)/debug_ft_putstr_fd.o \
-			 $(OBJ_DIR)/debug_ft_split.o $(OBJ_DIR)/debug_ft_strchr.o $(OBJ_DIR)/debug_ft_strdup.o \
-			 $(OBJ_DIR)/debug_ft_striteri.o $(OBJ_DIR)/debug_ft_strjoin.o $(OBJ_DIR)/debug_ft_strlcat.o \
-			 $(OBJ_DIR)/debug_ft_strlcpy.o $(OBJ_DIR)/debug_ft_strlen.o $(OBJ_DIR)/debug_ft_strmapi.o \
-			 $(OBJ_DIR)/debug_ft_strncmp.o $(OBJ_DIR)/debug_ft_strnstr.o $(OBJ_DIR)/debug_ft_strrchr.o \
-			 $(OBJ_DIR)/debug_ft_strtrim.o $(OBJ_DIR)/debug_ft_substr.o $(OBJ_DIR)/debug_ft_tolower.o \
-			 $(OBJ_DIR)/debug_ft_toupper.o $(OBJ_DIR)/debug_ft_lstadd_back_bonus.o $(OBJ_DIR)/debug_ft_lstadd_front_bonus.o \
-			 $(OBJ_DIR)/debug_ft_lstclear_bonus.o $(OBJ_DIR)/debug_ft_lstdelone_bonus.o $(OBJ_DIR)/debug_ft_lstiter_bonus.o \
-			 $(OBJ_DIR)/debug_ft_lstlast_bonus.o $(OBJ_DIR)/debug_ft_lstmap_bonus.o $(OBJ_DIR)/debug_ft_lstnew_bonus.o \
-			 $(OBJ_DIR)/debug_ft_lstsize_bonus.o
-
-# Targets
+DEBUG_OBJS = $(addprefix $(OBJ_DIR)/, $(addprefix debug_, $(notdir $(SRCS:.c=.o))))S
 all: $(NAME)
 
 bonus: all
@@ -88,7 +61,7 @@ $(NAME): $(OBJS)
 # Debug build
 debug: $(DEBUG_OBJS)
 	@echo "$(YELLOW)LIBFT : Creating debug library debug.a...$(RESET_COLOR)"
-	@$(AR) rcs debug.a $(DEBUG_OBJS)
+	@$(AR) debug.a $(DEBUG_OBJS)
 	@echo "$(GREEN)LIBFT : Debug library debug.a created!$(RESET_COLOR)"
 
 # Norminette check
