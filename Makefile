@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+         #
+#    By: fvon-de <fvon-der@student.42heilbronn.d    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/08 14:52:11 by fvon-der          #+#    #+#              #
-#    Updated: 2024/10/23 13:08:22 by fvon-der         ###   ########.fr        #
+#    Updated: 2024/10/24 12:53:39 by fvon-de          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,14 +20,15 @@ RED         = \033[1;31m
 # Compiler and Flags
 CC          = cc
 NAME        = libft.a
-CFLAGS      = -Wall -Wextra -Werror -I.
-DEBUG_FLAGS = -g -O0 -Wall -Wextra -Werror -fsanitize=address -fsanitize=undefined \
+CFLAGS      = -Wall -Wextra -Werror -I $(INCLUDE)
+DEBUG_FLAGS = $(CFLAGS) -g -O0 -fsanitize=address -fsanitize=undefined \
 			  -fno-strict-aliasing -fno-omit-frame-pointer -fstack-protector -DDEBUG -fno-inline
 AR          = ar rcs
 
 # Directories
 OBJ_DIR     = obj
-SRC_DIR     = .
+SRC_DIR     = src
+INCLUDE		= include
 
 SRCS = $(SRC_DIR)/ft_atoi.c $(SRC_DIR)/ft_bzero.c $(SRC_DIR)/ft_calloc.c $(SRC_DIR)/ft_isalnum.c \
 	   $(SRC_DIR)/ft_isalpha.c $(SRC_DIR)/ft_isascii.c $(SRC_DIR)/ft_isdigit.c $(SRC_DIR)/ft_isprint.c \

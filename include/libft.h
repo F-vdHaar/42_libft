@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fvon-der <fvon-der@student.42.fr>          +#+  +:+       +#+        */
+/*   By: fvon-de <fvon-der@student.42heilbronn.d    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 14:35:52 by fvon-der          #+#    #+#             */
-/*   Updated: 2024/10/23 13:33:38 by fvon-der         ###   ########.fr       */
+/*   Updated: 2024/10/24 12:54:30 by fvon-de          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <ctype.h>// check if really needed
 # include <limits.h>
 # include <unistd.h>// for write
+# include <stdint.h>
 
 typedef struct s_list
 {
